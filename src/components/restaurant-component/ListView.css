@@ -1,0 +1,124 @@
+/* src/components/ListView.css */
+
+.list-view {
+    margin: 20px;
+  }
+  
+  .list-view h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .list-view ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list-view li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .list-view li:hover {
+    background-color: #e9ecef;
+  }
+  
+  .restaurant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .restaurant-info {
+    flex: 1;
+  }
+  
+  .rating-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .rating-emoji {
+    font-size: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .rating-emoji:hover {
+    transform: scale(1.2);
+  }
+
+  /* Tooltip container */
+.rating-emoji .tooltip {
+    visibility: hidden;
+    width: 80px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the emoji */
+    left: 50%;
+    margin-left: -40px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .rating-emoji .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .rating-emoji:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  
+  .rating-emoji.selected {
+    pointer-events: none;
+  }
+  
+  .restaurant-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e1dddd;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .restaurant-details p {
+    margin: 5px 0;
+  }
+  
+  .restaurant-details a {
+    color: #007bff;
+  }
+
+  .list-view li h3 {
+    color: #007bff;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .list-view li p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+  }

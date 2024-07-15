@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import SearchLoc from './components/search-loc-component/SearchLoc';
+import ListView from './components/restaurant-component/ListView';
+import MapView from './components/restaurant-component/MapView';
+import { mockLocations, mockRestaurants } from './mock-data/RestaurantMock';
 import './App.css';
+import { Restaurant } from './models/RestaurantModels';
 
-function App() {
+const API_KEY = true;
+
+const App: React.FC = () => {
+  const [restaurants, setRestaurants] = useState<any>([]);
+  const [view, setView] = useState<'list' | 'map'>('list');
+  const [message, setMessage] = useState('');
+
+  const handleLocationSearch = async (searchLocation: string, restaurants: Restaurant[]) => {
+    if (API_KEY) {
+      setRestaurants(restaurants);
+    } else {
+      const coords = mockLocations[searchLocation];
+      if (coords) {
+        setRestaurants(mockRestaurants.filter(restaurant =>
+          coords.some(coord => 
+            restaurant.lat === coord[0] && restaurant.lon === coord[1]
+          )
+        ));
+        setMessage('');
+      } else {
+        setMessage('Invalid address.');
+      }
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app-container">
+      <header className="app-header">
+        BUMMER <span className="red-exclamation">❗</span>
       </header>
+      <SearchLoc onSearch={handleLocationSearch} realSearchOn={true}/>
+      <div className="toggle-container">
+        <label className="switch">
+          <input type="checkbox" checked={view === 'map'} onChange={() => setView(view === 'list' ? 'map' : 'list')} />
+          <span className="slider"></span>
+        </label>
+      </div>
+      {view === 'list' ? (
+        <ListView restaurants={restaurants} />
+      ) : (
+        <MapView restaurants={restaurants} />
+      )}
+      {message && <p className="error-message">{message}</p>}
     </div>
   );
-}
+};
 
 export default App;
+
