@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bummer/static/css/main.4e95247f.css",
+    "main.js": "/bummer/static/js/main.1aa28d98.js",
+    "index.html": "/bummer/index.html",
+    "main.4e95247f.css.map": "/bummer/static/css/main.4e95247f.css.map",
+    "main.1aa28d98.js.map": "/bummer/static/js/main.1aa28d98.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e95247f.css",
+    "static/js/main.1aa28d98.js"
+  ]
+}
