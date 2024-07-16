@@ -8,17 +8,45 @@
     border-radius: 8px;
     overflow: hidden;
     margin-top: 20px;
-  }
-  
-  .leaflet-container {
+}
+
+.leaflet-container {
     height: 100%;
     width: 100%;
-  }
-  
-  .error-message {
+}
+
+.error-message {
     color: red;
     font-weight: bold;
     text-align: center;
     margin-top: 10px;
-  }
-  
+}
+
+.popup-content {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.popup-content h1 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.popup-content p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.popup-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.popup-content a:hover {
+    text-decoration: underline;
+}
+
+.popup-content .fa {
+    margin-right: 5px;
+}

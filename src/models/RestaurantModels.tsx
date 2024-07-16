@@ -4,7 +4,7 @@ export interface Restaurant {
     address: string;
     lat: number;
     lon: number;
-    url: string;
+    url?: string;
     website?: string;
     serviceType?: string;
     takeaway?: string;
