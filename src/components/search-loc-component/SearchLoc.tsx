@@ -111,12 +111,11 @@ export const SearchLoc: React.FC<SearchLocProps> = ({ onSearch, realSearchOn }) 
             +', '+ element.tags['addr:city']+', '+ element.tags['addr:state']+', '+ element.tags['addr:postcode']),
         category: element.tags.cuisine || 'restaurant',
         service: element.tags.amenity || '',
-        wedsite: element.tags.website,
+        website: element.tags.website,
         takeaway: element.tags.takeaway,
         phone: element.tags.phone,
         hours: element.tags.hours
       }));
-      console.log(restaurants);
       onSearch(location, restaurants);
     } catch (error) {
       console.error('Error fetching data from Overpass API:', error);

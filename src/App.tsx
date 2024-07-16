@@ -10,13 +10,13 @@ import { Restaurant } from './models/RestaurantModels';
 const API_KEY = true;
 
 const App: React.FC = () => {
-  const [restaurants, setRestaurants] = useState<any>([]);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [view, setView] = useState<'list' | 'map'>('list');
   const [message, setMessage] = useState('');
 
-  const handleLocationSearch = async (searchLocation: string, restaurants: Restaurant[]) => {
+  const handleLocationSearch = async (searchLocation: string, restaurantList: Restaurant[]) => {
     if (API_KEY) {
-      setRestaurants(restaurants);
+      setRestaurants(restaurantList);
     } else {
       const coords = mockLocations[searchLocation];
       if (coords) {

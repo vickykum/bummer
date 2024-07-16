@@ -11,6 +11,7 @@ import { Restaurant } from '../../models/RestaurantModels';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { extractDomain } from '../../utils/UrlUtils';
 
 // Define the default icon
 const DefaultIcon = L.icon({
@@ -38,15 +39,6 @@ const MapView: React.FC<MapViewProps> = ({ restaurants }) => {
             setCenter([restaurants[0].lat, restaurants[0].lon]);
         }
     }, [restaurants]);
-
-    const extractDomain = (url: string): string => {
-        try {
-            const hostname = new URL(url).hostname;
-            return hostname.startsWith('www.') ? hostname.slice(4) : hostname;
-        } catch (e) {
-            return '';
-        }
-    };
 
     return (
         <div className="map-container">
@@ -78,8 +70,16 @@ const MapView: React.FC<MapViewProps> = ({ restaurants }) => {
                         >
                             <Popup>
                                 <div className="popup-content">
-                                    {restaurant.name && <h1><FontAwesomeIcon icon={faUtensils} /> {restaurant.name}</h1>}
-                                    {restaurant.address && <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {restaurant.address}</p>}
+                                    {restaurant.name && (
+                                        <h1>
+                                            {restaurant.website ? (
+                                                <img src={'https://logo.clearbit.com/' + extractDomain(restaurant.website)} alt="Restaurant Icon" className="restaurant-icon" />
+                                            ) : (
+                                                <FontAwesomeIcon icon={faUtensils} />
+                                            )}{' '}
+                                            {restaurant.name}
+                                        </h1>
+                                    )}                                    {restaurant.address && <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {restaurant.address}</p>}
                                     {restaurant.serviceType && <p><FontAwesomeIcon icon={faUtensils} /> {restaurant.serviceType}</p>}
                                     {restaurant.website && (
                                         <p>

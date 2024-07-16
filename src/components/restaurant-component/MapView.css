@@ -50,3 +50,10 @@
 .popup-content .fa {
     margin-right: 5px;
 }
+
+.restaurant-icon {
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+    margin-right: 8px; /* Adjust spacing as needed */
+    vertical-align: middle; /* Align icon with text */
+}
