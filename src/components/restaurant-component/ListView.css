@@ -11,7 +11,7 @@
   .list-view ul {
     list-style-type: none;
     padding: 0;
-    position: relative; /* Ensure relative positioning for children */
+    position: relative;
   }
   
   .list-view li {
@@ -22,7 +22,7 @@
     margin-bottom: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    position: relative; /* Ensure relative positioning */
+    position: relative;
   }
   
   .list-view li:hover {
@@ -33,22 +33,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center !important;
-    width: 100%; /* Ensure full width */
   }
   
   .restaurant-info {
-    flex: 1; /* Take remaining space */
-    align-self: flex-start; /* Align content at the start */
+    flex: 1;
+    text-align: left; /* Align text left */
   }
   
   .rating-section {
     display: flex;
     align-items: center;
-    position: absolute;
-    right: 10px; /* Position to the right */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for centering */
+    justify-content: flex-end; /* Align emojis right */
   }
   
   .rating-emoji {
@@ -56,14 +51,13 @@
     margin-right: 10px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    position: relative; /* Ensure relative positioning for children */
+    position: relative;
   }
   
   .rating-emoji:hover {
     transform: scale(1.2);
   }
   
-  /* Tooltip container */
   .rating-emoji .tooltip {
     visibility: hidden;
     width: 80px;
@@ -74,23 +68,11 @@
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Position above the emoji */
+    bottom: 125%;
     left: 50%;
-    margin-left: -40px; /* Center the tooltip */
+    margin-left: -40px;
     opacity: 0;
     transition: opacity 0.3s;
-  }
-  
-  /* Tooltip arrow */
-  .rating-emoji .tooltip::after {
-    content: "";
-    position: absolute;
-    top: 100%; /* At the bottom of the tooltip */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
   }
   
   .rating-emoji:hover .tooltip {
@@ -99,23 +81,20 @@
   }
   
   .restaurant-details {
-    padding: 0px 10px;
-    background-color: #e1dddd;
-    border: 1px solid #ccc;
-    border-radius: 0px 0px 4px 4px;
-    width: calc(100% - 20px); /* Take full width minus padding */
-    max-height: 100%; /* Adjust max height as needed */
-    overflow: hidden; /* Hide overflow */
-    transition: max-height 0.3s ease; /* Slide animation */
-    position: absolute; /* Position absolutely */
-    left: 0; /* Align left */
-    top: calc(100% + 0px); /* Position below the list item */
-    opacity: 1; /* Ensure visibility */
-    z-index: 1; /* Ensure details are above other list items */
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    width: calc(100% - 20px);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    left: 10px;
+    z-index: 1;
+    text-align: left;
   }
   
   .restaurant-details.open {
-    max-height: 500px; /* Adjust maximum height to show details */
+    max-height: 200px;
+    opacity: 1;
   }
   
   .restaurant-details p {
@@ -139,20 +118,46 @@
   }
   
   .restaurant-icon {
-    width: 24px; /* Adjust size as needed */
-    height: 24px; /* Adjust size as needed */
-    margin-right: 8px; /* Adjust spacing as needed */
-    vertical-align: middle; /* Align icon with text */
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
   }
   
   .fa-icon {
-    margin-right: 8px; /* Adjust spacing as needed */
+    margin-right: 8px;
     font-size: 24px;
   }
   
-  /* Ensure enough space for expanded details */
-  .list-view li.selected ~ li {
-    transform: translateY(150px); /* Adjust the translation as needed */
-    transition: transform 0.3s ease; /* Smooth transition */
+  @media screen and (max-width: 768px) {
+    .restaurant-header {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .rating-section {
+      position: relative;
+      flex-grow: 1;
+      margin-top: 10px;
+      justify-content: flex-end; /* Align emojis right */
+    }
+    
+    .restaurant-details {
+      width: 100%;
+      max-height: 100%;
+      left: auto;
+      margin-top: 10px;
+    }
+    
+    .list-view li {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .list-view li.selected ~ li {
+      transform: none;
+    }
   }
   

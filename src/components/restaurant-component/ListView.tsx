@@ -38,7 +38,7 @@ const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
                 <div className="restaurant-info" onClick={() => handleRestaurantClick(restaurant)}>
                   <h3>
                     {restaurant.website ? (
-                      <img src={'https://logo.clearbit.com/' + extractDomain(restaurant.website)} alt="Restaurant Icon" className="restaurant-icon" />
+                      <img src={`https://logo.clearbit.com/${extractDomain(restaurant.website)}`} alt="Restaurant Icon" className="restaurant-icon" />
                     ) : (
                       <FontAwesomeIcon icon={faUtensils} className="fa-icon" />
                     )}
@@ -86,7 +86,7 @@ const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
                 </div>
               </div>
               {selectedRestaurant === restaurant && (
-                <div className="restaurant-details">
+                <div className="restaurant-details open">
                   <p><strong>Service Type:</strong> {restaurant.serviceType}</p>
                   <p><strong>Website:</strong> <a href={restaurant.website} target="_blank" rel="noopener noreferrer">{restaurant.website}</a></p>
                   <p><strong>Phone:</strong> {restaurant.phone}</p>
