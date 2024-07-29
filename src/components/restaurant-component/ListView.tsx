@@ -27,7 +27,6 @@ const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
 
   return (
     <div className="list-view">
-      <h2>List View</h2>
       {restaurants.length === 0 ? (
         <p>No restaurants found</p>
       ) : (

@@ -39,12 +39,11 @@ const App: React.FC = () => {
       </header>
       <SearchLoc onSearch={handleLocationSearch} realSearchOn={true}/>
       <div className="toggle-container">
-        List View
         <label className="switch">
+        Map View
           <input type="checkbox" checked={view === 'map'} onChange={() => setView(view === 'list' ? 'map' : 'list')} />
           <span className="slider"></span>
         </label>
-        Map View
       </div>
       {view === 'list' ? (
         <ListView restaurants={restaurants} />

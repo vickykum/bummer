@@ -42,7 +42,6 @@ const MapView: React.FC<MapViewProps> = ({ restaurants }) => {
 
     return (
         <div className="map-container">
-            <h2>List View</h2>
             {restaurants.length > 0 ? (
                 <MapContainer center={center} zoom={13} style={{ height: '100%', width: '100%' }}>
                     <ChangeView center={center} />
