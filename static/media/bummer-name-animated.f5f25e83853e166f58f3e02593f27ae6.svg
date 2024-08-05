@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
+  <style>
+    /* Base style for text */
+    text {
+      letter-spacing: -4px; /* Adjust this value to control spacing */
+    }
+    .letter {
+      opacity: 0;
+      animation: slideIn 6s forwards;
+    }
+    /* Specific delays for each letter */
+    .letter:nth-child(1) { animation-delay: 0s; }
+    .letter:nth-child(2) { animation-delay: 0.5s; }
+    .letter:nth-child(3) { animation-delay: 1s; }
+    .letter:nth-child(4) { animation-delay: 1.5s; }
+    .letter:nth-child(5) { animation-delay: 2s; }
+    .letter:nth-child(6) { animation-delay: 2.5s; }
+    .letter:nth-child(7) { animation-delay: 3s; }
+    .exclamation {
+      opacity: 0;
+      animation: shakeZoom 2s 4s forwards;
+    }
+    /* Slide-in animation for each letter */
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    /* Shake and zoom animation for the exclamation mark */
+    @keyframes shakeZoom {
+      0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+      25% {
+        transform: scale(1.2) translateY(-10px);
+      }
+      50% {
+        transform: scale(1.2) translateY(10px);
+      }
+      75% {
+        transform: scale(1.2) translateY(-10px);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+  <!-- Display the word with each letter having its own animation delay -->
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="48" font-weight="bold">
+    <tspan class="letter" fill="#F97316">B</tspan>
+    <tspan class="letter" fill="#F97316">U</tspan>
+    <tspan class="letter" fill="#F97316">M</tspan>
+    <tspan class="letter" fill="#F97316">M</tspan>
+    <tspan class="letter" fill="#F97316">E</tspan>
+    <tspan class="letter" fill="#F97316">R</tspan>
+    <tspan class="exclamation" fill="#FF0000">!</tspan>
+  </text>
+</svg>
