@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/bummer/static/css/main.6678b837.css",
-    "main.js": "/bummer/static/js/main.d000b631.js",
+    "main.css": "/bummer/static/css/main.4944c5c4.css",
+    "main.js": "/bummer/static/js/main.d0633d32.js",
     "index.html": "/bummer/index.html",
-    "main.6678b837.css.map": "/bummer/static/css/main.6678b837.css.map",
-    "main.d000b631.js.map": "/bummer/static/js/main.d000b631.js.map"
+    "main.4944c5c4.css.map": "/bummer/static/css/main.4944c5c4.css.map",
+    "main.d0633d32.js.map": "/bummer/static/js/main.d0633d32.js.map"
   },
   "entrypoints": [
-    "static/css/main.6678b837.css",
-    "static/js/main.d000b631.js"
+    "static/css/main.4944c5c4.css",
+    "static/js/main.d0633d32.js"
   ]
 }
