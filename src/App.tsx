@@ -6,6 +6,8 @@ import MapView from './components/view-component/MapView';
 import { mockLocations, mockRestaurants } from './mock-data/RestaurantMock';
 import './App.css';
 import { Restaurant } from './models/RestaurantModels';
+import bummerLogo from './logos/bummer-logos/bummer-name-animated.svg';
+
 
 const API_KEY = true;
 
@@ -35,7 +37,7 @@ const App: React.FC = () => {
   return (
     <div className="app-container">
       <header className="app-header">
-        BUMMER <span className="red-exclamation">❗</span>
+      <span className="bummer-logo"><img src={bummerLogo} alt="BUMMER❗" /></span>
       </header>
       <SearchLoc onSearch={handleLocationSearch} realSearchOn={true}/>
       <div className="toggle-container">

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
+  <style>
+    .text {
+      animation: slideIn 4s forwards; /* Slower slide-in */
+    }
+    .exclamation {
+      animation: shakeZoom 2s 4s forwards; /* Slower shake and zoom */
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes shakeZoom {
+      0% {
+        transform: scale(1) translateY(0);
+      }
+      50% {
+        transform: scale(1.5) translateY(-10px);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+      }
+    }
+  </style>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="48" font-weight="bold" fill="#F97316">
+    <tspan class="text">BUMMER</tspan>
+    <tspan class="exclamation" fill="#FF0000">!</tspan>
+  </text>
+</svg>

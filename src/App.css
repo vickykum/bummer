@@ -24,9 +24,9 @@
   height: 4rem; /* Adjust the height as needed */
 }
 
-.red-exclamation {
-  font-size: 2rem;
-  margin-left: 0.5rem;
+.bummer-logo img{
+  height: 130px;
+  width: 450px;
 }
 
 .error-message {
