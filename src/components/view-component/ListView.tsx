@@ -7,6 +7,8 @@ import { extractDomain } from '../../utils/UrlUtils';
 import RatingSection from './restaurant-component/rating-section/RatingSection';
 import RatingPopup from './restaurant-component/rating-popup/RatingPopup';
 import RestaurantDetails from './restaurant-component/restaurant-details/RestaurantDetails';
+// Import SVGs
+import addRatingLogo from '../../logos/emoji-logos/emoji-add.svg';
 
 interface ListViewProps {
   restaurants: Restaurant[];
@@ -49,7 +51,7 @@ const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
                   <p>{restaurant.address}</p>
                 </div>
                 <div className="add-rating-container">
-                <span className="add-rating" onClick={() => openPopup(restaurant)}>➕</span>
+                <span className="add-rating" onClick={() => openPopup(restaurant)}><img src={addRatingLogo} alt="➕"></img></span>
                 </div>
                 
               </div>

@@ -4,20 +4,26 @@
     margin: 10px 0;
     padding: 10px 0px;
     width: 100%;
-  }
-  
-  .rating-emoji {
+}
+
+.rating-emoji {
     font-size: 30px;
     cursor: pointer;
     position: relative;
     transition: transform 0.3s;
-  }
-  
-  .rating-emoji:hover {
+}
+
+.rating-emoji:hover {
     transform: scale(1.2);
-  }
-  
-  .rating-emoji .tooltip {
+}
+
+.rating-emoji img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    margin: -2px -4px 0px 0px;
+}
+
+.rating-emoji .tooltip {
     visibility: hidden;
     width: 60px; /* Adjusted size */
     background-color: black;
@@ -32,14 +38,14 @@
     margin-left: -30px; /* Adjusted to fit smaller tooltip */
     opacity: 0;
     transition: opacity 0.3s;
-  }
-  
-  .rating-emoji:hover .tooltip {
+}
+
+.rating-emoji:hover .tooltip {
     visibility: visible;
     opacity: 1;
-  }
-  
-  .popup-overlay {
+}
+
+.popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,68 +56,67 @@
     justify-content: center;
     align-items: center;
     z-index: 3;
-  }
-  
-  .rating-popup-content {
+}
+
+.rating-popup-content {
     background: white;
     padding: 20px;
     border-radius: 8px;
     position: relative;
     max-width: 500px;
     width: 100%;
-  }
-  
-  .popup-close {
+}
+
+.popup-close {
     position: absolute;
     top: 10px;
     right: 10px;
     background: none;
     border: none;
     cursor: pointer;
-  }
-  
-  .popup-close svg {
+}
+
+.popup-close svg {
     font-size: 18px;
-  }
-  
-  .review-popup-header {
+}
+
+.review-popup-header {
     margin-bottom: 10px;
-  }
-  
-  .review-popup-body {
+}
+
+.review-popup-body {
     text-align: left;
-  }
-  
-  .review-list {
+}
+
+.review-list {
     margin-top: 10px;
-  }
-  
-  .review-list .review {
+}
+
+.review-list .review {
     margin-bottom: 10px;
-  }
-  
-  .review-votes {
+}
+
+.review-votes {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  
-  .vote-button {
+}
+
+.vote-button {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 10px;
-  }
-  
-  .vote-button.upvoted {
+}
+
+.vote-button.upvoted {
     color: green;
-  }
-  
-  .vote-button.downvoted {
+}
+
+.vote-button.downvoted {
     color: red;
-  }
-  
-  .review-votes .vote-button:disabled {
+}
+
+.review-votes .vote-button:disabled {
     color: gray;
-  }
-  
+}

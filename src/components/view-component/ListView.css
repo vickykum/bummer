@@ -44,6 +44,11 @@
   font-size: 25px;
 }
 
+.add-rating img {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+}
+
 .restaurant-icon {
   width: 24px;
   height: 24px;

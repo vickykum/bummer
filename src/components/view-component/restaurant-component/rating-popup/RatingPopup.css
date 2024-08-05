@@ -7,7 +7,7 @@
     min-width: 200px;
     max-width: 300px;
     z-index: 2;
-    color:blue
+    color: blue;
   }
   
   .rating-popup-container {
@@ -40,6 +40,11 @@
   .rating-option {
     font-size: 24px;
     cursor: pointer;
+  }
+  
+  .rating-option img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
   }
   
   .rating-option.selected {

@@ -5,6 +5,12 @@ import { faTimes, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-ico
 import './RatingSection.css';
 import { Restaurant } from '../../../../models/RestaurantModels';
 
+// Import SVGs
+import yayLogo from '../../../../logos/emoji-logos/emoji-yay-green.svg';
+import okLogo from '../../../../logos/emoji-logos/emoji-ok-blue.svg';
+import mehLogo from '../../../../logos/emoji-logos/emoji-meh-orange.svg';
+import bummerLogo from '../../../../logos/emoji-logos/emoji-bummer-red.svg';
+
 interface RatingSectionProps {
     restaurant: Restaurant;
 }
@@ -90,10 +96,10 @@ const RatingSection: React.FC<RatingSectionProps> = ({ restaurant }) => {
                         className={`rating-emoji ${restaurant.rating === rating ? 'selected' : ''}`}
                         onClick={() => handleRatingClick(rating as Rating)}
                     >
-                        {rating === 'Yay' && '😋'}
-                        {rating === 'Ok' && '🙂'}
-                        {rating === 'Meh' && '🫤'}
-                        {rating === 'Bummer' && '🤬'}
+                        {rating === 'Yay' && <img src={yayLogo} alt="Yay" />}
+                        {rating === 'Ok' && <img src={okLogo} alt="Ok" />}
+                        {rating === 'Meh' && <img src={mehLogo} alt="Meh" />}
+                        {rating === 'Bummer' && <img src={bummerLogo} alt="Bummer" />}
                         <span className="tooltip">{rating}</span>
                     </span>
                 </Badge>

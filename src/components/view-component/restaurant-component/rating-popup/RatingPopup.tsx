@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import './RatingPopup.css'; // Assuming a new CSS file for RatingPopup
 import { Restaurant } from '../../../../models/RestaurantModels';
 
+// Import SVGs
+import yayLogo from '../../../../logos/emoji-logos/emoji-yay-green.svg';
+import okLogo from '../../../../logos/emoji-logos/emoji-ok-blue.svg';
+import mehLogo from '../../../../logos/emoji-logos/emoji-meh-orange.svg';
+import bummerLogo from '../../../../logos/emoji-logos/emoji-bummer-red.svg';
+
 interface RatingPopupProps {
   setShowPopup: (show: Restaurant | null) => void;
   showPopup: Restaurant | null;
@@ -27,7 +33,7 @@ const RatingPopup: React.FC<RatingPopupProps> = ({ setShowPopup, showPopup }) =>
 
   return (
     <div className="rating-popup">
-        <h3>Review/Rating for {restaurant?.name}</h3>
+      <h3>Review/Rating for {restaurant?.name}</h3>
       <div className="rating-options">
         {['Yay', 'Ok', 'Meh', 'Bummer'].map(rating => (
           <div
@@ -35,21 +41,21 @@ const RatingPopup: React.FC<RatingPopupProps> = ({ setShowPopup, showPopup }) =>
             className={`rating-option ${selectedRating === rating ? 'selected' : ''}`}
             onClick={() => setSelectedRating(rating)}
           >
-            {rating === 'Yay' && '😋'}
-            {rating === 'Ok' && '🙂'}
-            {rating === 'Meh' && '🫤'}
-            {rating === 'Bummer' && '🤬'}
+            {rating === 'Yay' && <img src={yayLogo} alt="Yay" />}
+            {rating === 'Ok' && <img src={okLogo} alt="Ok" />}
+            {rating === 'Meh' && <img src={mehLogo} alt="Meh" />}
+            {rating === 'Bummer' && <img src={bummerLogo} alt="Bummer" />}
           </div>
         ))}
       </div>
       <div className="review-section">
-          <textarea
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-            placeholder="Write your review"
-          />
-          <button onClick={handleSubmit} disabled={!(review && selectedRating)}>Submit</button>
-        </div>
+        <textarea
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+          placeholder="Write your review"
+        />
+        <button onClick={handleSubmit} disabled={!(review && selectedRating)}>Submit</button>
+      </div>
       {submittedReview && (
         <div className="submitted-review">
           <p>{selectedRating} - {submittedReview}</p>
