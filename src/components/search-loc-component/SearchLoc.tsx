@@ -146,7 +146,7 @@ export const SearchLoc: React.FC<SearchLocProps> = ({ onSearch, realSearchOn }) 
             }
         });
 
-        let skipRemainingApiCalls = false;
+        let skipRemainingApiCalls = true;
         const detailedRestaurants: Restaurant[] = [];
 
         for (let i = 0; i < Math.min(restaurantsWithMissingFields.length, 5); i++) {

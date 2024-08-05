@@ -1,0 +1,119 @@
+/* Common styles for list-view component */
+.list-view {
+  margin: 20px;
+}
+
+.list-view ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-view li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.list-view li:hover {
+  background-color: #e9ecef;
+}
+
+.restaurant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-info {
+  flex: 1;
+  text-align: left;
+}
+
+.add-rating-container {
+  flex: 0 0 20%;
+  text-align: right;
+  color: red;
+}
+
+.add-rating:hover {
+  font-size: 25px;
+}
+
+.restaurant-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.fa-icon {
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+.restaurant-details {
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+  width: calc(100% - 20px);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  left: 10px;
+  z-index: 1;
+  text-align: left;
+}
+
+.restaurant-details.open {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.restaurant-details p {
+  margin: 5px 0;
+}
+
+.restaurant-details a {
+  color: #007bff;
+}
+
+.list-view li h3 {
+  color: #007bff;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.list-view li p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .restaurant-header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .restaurant-details {
+    width: 100%;
+    max-height: 100%;
+    left: auto;
+    margin-top: 10px;
+  }
+
+  .list-view li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-view li.selected ~ li {
+    transform: none;
+  }
+}

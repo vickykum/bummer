@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchLoc from './components/search-loc-component/SearchLoc';
-import ListView from './components/restaurant-component/ListView';
-import MapView from './components/restaurant-component/MapView';
+import ListView from './components/view-component/ListView';
+import MapView from './components/view-component/MapView';
 import { mockLocations, mockRestaurants } from './mock-data/RestaurantMock';
 import './App.css';
 import { Restaurant } from './models/RestaurantModels';
