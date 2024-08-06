@@ -99,21 +99,6 @@ export const SearchLoc: React.FC<SearchLocProps> = ({ onSearch, realSearchOn }) 
 
     const radiusInMeters = 4000;
 
-    const fetchNominatimData = async (lat: number, lon: number) => {
-        try {
-            const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`;
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error fetching Nominatim reverse data:', error);
-            throw error; // Propagate the error to handle in the caller
-        }
-    };
-
     const processRestaurantsData = async (data: any) => {
         const restaurantsWithRequiredFields: Restaurant[] = [];
         const restaurantsWithMissingFields: Restaurant[] = [];
@@ -137,39 +122,17 @@ export const SearchLoc: React.FC<SearchLocProps> = ({ onSearch, realSearchOn }) 
                 };
 
                 if (restaurant.address.replace(/, /g, '') === '') {
-                    restaurantsWithMissingFields.push({ ...element });
+                    restaurantsWithMissingFields.push({ ...tags, ...element });
                 } else {
                     restaurantsWithRequiredFields.push(restaurant);
                 }
             } else if (tags && tags.name && tags.website && lat && lon) {
-                restaurantsWithMissingFields.push({ ...element });
+                restaurantsWithMissingFields.push({...tags, ...element });
             }
         });
+        console.log(restaurantsWithMissingFields);
 
-        let skipRemainingApiCalls = true;
-        const detailedRestaurants: Restaurant[] = [];
-
-        for (let i = 0; i < Math.min(restaurantsWithMissingFields.length, 5); i++) {
-            const element = restaurantsWithMissingFields[i];
-            if (skipRemainingApiCalls) {
-                console.log('Skipped', element);
-                continue;
-            }
-            try {
-                const addressData = await fetchNominatimData(element.lat, element.lon);
-                detailedRestaurants.push({
-                    name: element.name,
-                    lat: element.lat,
-                    lon: element.lon,
-                    address: addressData.display_name || '',
-                });
-            } catch (error) {
-                console.error('Error processing restaurant data:', error);
-                skipRemainingApiCalls = true; // Stop processing further if an error occurs
-            }
-        }
-
-        return [...restaurantsWithRequiredFields, ...detailedRestaurants];
+        return [...restaurantsWithRequiredFields, ...restaurantsWithMissingFields];
     };
 
     const fetchRestaurants = async (location: string) => {
@@ -179,16 +142,6 @@ export const SearchLoc: React.FC<SearchLocProps> = ({ onSearch, realSearchOn }) 
         (
           // Nodes
           node
-            ["amenity"~"^(fast_food|cafe|restaurant|food_court|ice_cream|pub|bar|biergarten|bbq|drinking_water|juice_bar|tea)$"]
-            (around:${radiusInMeters},${lat},${lon});
-          
-          // Ways
-          way
-            ["amenity"~"^(fast_food|cafe|restaurant|food_court|ice_cream|pub|bar|biergarten|bbq|drinking_water|juice_bar|tea)$"]
-            (around:${radiusInMeters},${lat},${lon});
-          
-          // Relations
-          relation
             ["amenity"~"^(fast_food|cafe|restaurant|food_court|ice_cream|pub|bar|biergarten|bbq|drinking_water|juice_bar|tea)$"]
             (around:${radiusInMeters},${lat},${lon});
         );
