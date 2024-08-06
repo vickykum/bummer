@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bummer/static/css/main.dc436780.css",
-    "main.js": "/bummer/static/js/main.b37f6a6c.js",
+    "main.js": "/bummer/static/js/main.f7b8599e.js",
     "static/media/emoji-yay-green.svg": "/bummer/static/media/emoji-yay-green.568ff9e0f8e495a858eca167d91d59f1.svg",
     "static/media/emoji-ok-blue.svg": "/bummer/static/media/emoji-ok-blue.4a4fd0b82ca4ae6ecb54750bb41e0369.svg",
     "static/media/emoji-bummer-red.svg": "/bummer/static/media/emoji-bummer-red.126594ef3f982adb181e8cd8fa2f7057.svg",
@@ -10,10 +10,10 @@
     "static/media/bummer-name-animated.svg": "/bummer/static/media/bummer-name-animated.f5f25e83853e166f58f3e02593f27ae6.svg",
     "index.html": "/bummer/index.html",
     "main.dc436780.css.map": "/bummer/static/css/main.dc436780.css.map",
-    "main.b37f6a6c.js.map": "/bummer/static/js/main.b37f6a6c.js.map"
+    "main.f7b8599e.js.map": "/bummer/static/js/main.f7b8599e.js.map"
   },
   "entrypoints": [
     "static/css/main.dc436780.css",
-    "static/js/main.b37f6a6c.js"
+    "static/js/main.f7b8599e.js"
   ]
 }
