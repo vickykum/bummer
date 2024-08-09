@@ -27,6 +27,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .restaurant-info {
@@ -36,7 +37,7 @@
 
 .add-rating-container {
   flex: 0 0 20%;
-  text-align: right;
+  text-align: center;
   color: red;
 }
 
@@ -99,11 +100,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .restaurant-header {
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
 
   .restaurant-details {
     width: 100%;

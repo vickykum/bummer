@@ -4,11 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { Restaurant } from '../../models/RestaurantModels';
 import { extractDomain } from '../../utils/UrlUtils';
-import RatingSection from './restaurant-component/rating-section/RatingSection';
-import RatingPopup from './restaurant-component/rating-popup/RatingPopup';
-import RestaurantDetails from './restaurant-component/restaurant-details/RestaurantDetails';
-// Import SVGs
-import addRatingLogo from '../../logos/emoji-logos/emoji-add.svg';
+import { useNavigate } from 'react-router-dom';
+// Import icons
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 interface ListViewProps {
   restaurants: Restaurant[];
@@ -16,18 +14,10 @@ interface ListViewProps {
 
 const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
-  const [showPopup, setShowPopup] = useState<Restaurant | null>(null);
+  const navigate = useNavigate();
 
   const handleRestaurantClick = (restaurant: Restaurant) => {
-    setSelectedRestaurant(restaurant === selectedRestaurant ? null : restaurant);
-  };
-
-  const openPopup = (restaurant: Restaurant) => {
-    setShowPopup(restaurant);
-  };
-
-  const closePopup = () => {
-    setShowPopup(null);
+    navigate(`/restaurant/${restaurant.id}`, { state: { restaurant } });
   };
 
   return (
@@ -38,8 +28,8 @@ const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
         <ul>
           {restaurants.map((restaurant, index) => (
             <li key={index} className={selectedRestaurant === restaurant ? 'selected' : ''}>
-              <div className="restaurant-header">
-                <div className="restaurant-info" onClick={() => handleRestaurantClick(restaurant)}>
+              <div className="restaurant-header" onClick={() => handleRestaurantClick(restaurant)}>
+                <div className="restaurant-info">
                   <h3>
                     {restaurant.website ? (
                       <img src={`https://logo.clearbit.com/${extractDomain(restaurant.website)}`} alt="Restaurant Icon" className="restaurant-icon" />
@@ -51,26 +41,20 @@ const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
                   <p>{restaurant.address}</p>
                 </div>
                 <div className="add-rating-container">
-                <span className="add-rating" onClick={() => openPopup(restaurant)}><img src={addRatingLogo} alt="➕"></img></span>
+                  <span className="add-rating">
+                    <FontAwesomeIcon icon={faExclamationCircle} className="fa-beat-fade" />
+                  </span>
+                  <p>{Math.floor(Math.random() * 25) + 1} Reports</p>
                 </div>
-                
               </div>
-              <RatingSection 
-                restaurant={restaurant}
-              />
               {selectedRestaurant === restaurant && (
-                <RestaurantDetails restaurant={restaurant} />
+                <div className="restaurant-details">
+                  {/* RestaurantDetails component should be handled by routing */}
+                </div>
               )}
             </li>
           ))}
         </ul>
-      )}
-      {showPopup && (
-        <div className="popup-overlay" onClick={closePopup}>
-          <div className="rating-popup-container" onClick={(e) => e.stopPropagation()}>
-            <RatingPopup setShowPopup={setShowPopup} showPopup={showPopup} />
-          </div>
-        </div>
       )}
     </div>
   );
