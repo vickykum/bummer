@@ -7,6 +7,7 @@ import { extractDomain } from '../../utils/UrlUtils';
 import { useNavigate } from 'react-router-dom';
 // Import icons
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { addressToString } from '../../utils/StringUtils';
 
 interface ListViewProps {
   restaurants: Restaurant[];
@@ -38,7 +39,7 @@ const ListView: React.FC<ListViewProps> = ({ restaurants }) => {
                     )}
                     {restaurant.name}
                   </h3>
-                  <p>{restaurant.address}</p>
+                  {restaurant.address && <p>{addressToString(restaurant.address)}</p>}
                 </div>
                 <div className="add-rating-container">
                   <span className="add-rating">

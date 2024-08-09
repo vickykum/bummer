@@ -6,7 +6,7 @@ import './RestaurantDetails.css';
 import { Restaurant } from '../../../../models/RestaurantModels';
 import RatingPopup from '../rating-popup/RatingPopup';
 import RatingSection from '../rating-section/RatingSection';
-import { capitalizeString } from '../../../../utils/StringUtils';
+import { addressToString, capitalizeString } from '../../../../utils/StringUtils';
 import { extractDomain } from '../../../../utils/UrlUtils';
 
 const RestaurantDetails: React.FC = () => {
@@ -34,21 +34,20 @@ const RestaurantDetails: React.FC = () => {
 
   return (
     <div className="restaurant-details-page">
-      <div className="restaurant-details-header ">
+      <div className="restaurant-details-header">
         {restaurant.website ? (
           <img
             src={`https://logo.clearbit.com/${extractDomain(restaurant.website)}`}
             alt="Restaurant Logo"
-            className="restaurant-logo"
+            className="restaurant-details-icon"
           />
         ) : (
-          <FontAwesomeIcon icon={faUtensils} className="restaurant-logo" />
+          <FontAwesomeIcon icon={faUtensils} className="restaurant-details-icon" />
         )}
-        <h1>
-          {restaurant.name}</h1>
+        <h1>{restaurant.name}</h1>
       </div>
       <div className="restaurant-actions">
-        <div className="action-icon" onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.address || '')}`, '_blank')}>
+        <div className="action-icon" onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressToString(restaurant.address) || '')}`, '_blank')}>
           <FontAwesomeIcon icon={faMapMarkerAlt} />
           <p>Direction</p>
         </div>
@@ -74,9 +73,9 @@ const RestaurantDetails: React.FC = () => {
         </div>
       </div>
       <RatingSection restaurant={restaurant} />
-      <div className="restaurant-info">
+      <div className="restaurant-details-info">
         {restaurant.address && (
-          <p><FontAwesomeIcon icon={faMapMarkerAlt} /> Address: {restaurant.address}</p>
+          <p><FontAwesomeIcon icon={faMapMarkerAlt} /> Address: {restaurant.address && addressToString(restaurant.address)}</p>
         )}
         {restaurant.phone && (
           <p><FontAwesomeIcon icon={faPhoneAlt} /> Phone: {restaurant.phone}</p>

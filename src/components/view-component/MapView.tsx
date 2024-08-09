@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import './MapView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faGlobe, faUtensils, faClock, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faGlobe, faUtensils, faClock, faMapMarkerAlt, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { Restaurant } from '../../models/RestaurantModels';
 
 // Import the images for the marker icon
@@ -12,6 +12,8 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { extractDomain } from '../../utils/UrlUtils';
+import { addressToString } from '../../utils/StringUtils';
+import { useNavigate } from 'react-router-dom';
 
 // Define the default icon
 const DefaultIcon = L.icon({
@@ -32,6 +34,11 @@ interface MapViewProps {
 const MapView: React.FC<MapViewProps> = ({ restaurants }) => {
     const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant>();
     const [center, setCenter] = useState<L.LatLngExpression>([36.7637, 84.3951]);
+    const navigate = useNavigate();
+
+    const handleRestaurantClick = (restaurant: Restaurant) => {
+        navigate(`/restaurant/${restaurant.id}`, { state: { restaurant } });
+    };
 
     useEffect(() => {
         if (restaurants.length > 0) {
@@ -69,20 +76,27 @@ const MapView: React.FC<MapViewProps> = ({ restaurants }) => {
                             }}
                         >
                             <Popup>
-                                <div className="popup-content">
+                                <div className="popup-content" onClick={() => handleRestaurantClick(restaurant)}>
                                     {restaurant.name && (
-                                        <h1>
+                                        <div className="popup-header">
                                             {restaurant.website ? (
                                                 <img src={'https://logo.clearbit.com/' + extractDomain(restaurant.website)} alt="Restaurant Icon" className="restaurant-icon" />
                                             ) : (
                                                 <FontAwesomeIcon icon={faUtensils} />
-                                            )}{' '}
-                                            {restaurant.name}
-                                        </h1>
-                                    )}                                    {restaurant.address && <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {restaurant.address}</p>}
+                                            )}
+                                            <h1>{restaurant.name}</h1>
+                                            <div className="add-rating-container">
+                                                <span className="add-rating inner-text">
+                                                    <FontAwesomeIcon icon={faExclamationCircle} className="fa-beat-fade" />
+                                                </span>
+                                                <p>{Math.floor(Math.random() * 25) + 1} Reports</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {restaurant.address && <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {addressToString(restaurant.address)}</p>}
                                     {restaurant.serviceType && <p><FontAwesomeIcon icon={faUtensils} /> {restaurant.serviceType}</p>}
                                     {restaurant.website && (
-                                        <p>
+                                        <p className="popup-website">
                                             <FontAwesomeIcon icon={faGlobe} />{' '}
                                             <a href={restaurant.website} target="_blank" rel="noopener noreferrer">
                                                 {restaurant.website}

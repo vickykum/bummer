@@ -2,7 +2,7 @@
 export interface Restaurant {
     name: string;
     id?: string;
-    address: string;
+    address: Address;
     lat: number;
     lon: number;
     brand?: string;
@@ -15,3 +15,16 @@ export interface Restaurant {
     rating?: string;
     category?: string;
   }
+
+export interface Address {
+  housenumber?: string;
+  housename?: string;
+  street: string;
+  city?: string;
+  postcode?: string;
+  country?: string;
+  suburb?: string;
+  state?: string;
+  province?: string;
+  floor?: string;
+}

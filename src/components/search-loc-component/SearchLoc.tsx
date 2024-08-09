@@ -112,20 +112,26 @@ export const SearchLoc: React.FC<SearchLocProps> = ({ onSearch, realSearchOn }) 
                     brand: tags.brand,
                     lat,
                     lon,
-                    address: `${tags['addr:housenumber'] || ''} ${tags['addr:street'] || ''}, ${tags['addr:city'] || ''}, ${tags['addr:state'] || ''}, ${tags['addr:postcode'] || ''}`.trim(),
+                    address: {
+                      housenumber: tags['addr:housenumber'],
+                      housename: tags['addr:housename'],
+                      street: tags['addr:street'] || '',
+                      city: tags['addr:city'],
+                      postcode: tags['addr:postcode'],
+                      country: tags['addr:country'],
+                      suburb: tags['addr:suburb'],
+                      state: tags['addr:state'],
+                      province: tags['addr:province'],
+                      floor: tags['addr:floor']
+                    },
                     category: tags.cuisine || 'restaurant',
                     serviceType: tags.amenity,
                     website: tags.website,
                     takeaway: tags.takeaway,
                     phone: tags.phone,
                     hours: tags.hours
-                };
-
-                if (restaurant.address.replace(/, /g, '') === '') {
-                    restaurantsWithMissingFields.push({ ...tags, ...element });
-                } else {
-                    restaurantsWithRequiredFields.push(restaurant);
-                }
+                  };
+                  restaurantsWithRequiredFields.push(restaurant);
             } else if (tags && tags.name && tags.website && lat && lon) {
                 restaurantsWithMissingFields.push({...tags, ...element });
             }

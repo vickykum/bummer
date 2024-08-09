@@ -33,6 +33,7 @@
 .restaurant-info {
   flex: 1;
   text-align: left;
+  white-space: pre-line;
 }
 
 .add-rating-container {
@@ -90,7 +91,7 @@
 .list-view li h3 {
   color: #007bff;
   font-size: 18px;
-  margin-bottom: 5px;
+  margin: 5px 0px;
 }
 
 .list-view li p {

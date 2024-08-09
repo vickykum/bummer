@@ -17,21 +17,10 @@
   color: black;
 }
 
-.restaurant-logo {
+.restaurant-details-icon {
   width: 100px;
   height: auto;
   margin-bottom: 10px;
-}
-
-.restaurant-logo-placeholder {
-  width: 150px;
-  height: 150px;
-  background-color: #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: #666;
 }
 
 /* Action icons section styles */
@@ -57,11 +46,13 @@
 }
 
 /* Restaurant info section styles */
-.restaurant-info {
-  margin-top: 20px;
+.restaurant-details-info {
+  margin: 20px;
+  text-align: left;
+  white-space: pre-line;
 }
 
-.restaurant-info p {
+.restaurant-details-info p {
   margin: 5px 0;
   font-size: 16px;
   color: #333;

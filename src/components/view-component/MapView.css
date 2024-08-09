@@ -25,22 +25,34 @@
 .popup-content {
     font-family: Arial, sans-serif;
     font-size: 14px;
+    white-space: pre-line;
+    min-width: 200px; /* Prevents popup from shrinking too much */
+}
+
+.popup-content .popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .popup-content h1 {
     font-size: 18px;
     margin: 5px 0;
+    word-wrap: break-word;
 }
 
 .popup-content p {
     margin: 5px 0;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .popup-content a {
     color: #007bff;
     text-decoration: none;
+    word-wrap: break-word; /* Ensures long words are broken up */
 }
 
 .popup-content a:hover {
@@ -56,4 +68,24 @@
     height: 24px; /* Adjust size as needed */
     margin-right: 8px; /* Adjust spacing as needed */
     vertical-align: middle; /* Align icon with text */
+}
+
+.add-rating-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.add-rating {
+    margin-right: 5px;
+    
+    .inner-text{
+        font-size: 8px; /* Ensures the font size of the rating container is 8px */
+
+    }
+}
+
+.popup-website {
+    word-wrap: break-word; /* Ensures long URLs are broken up */
+    max-width: 100%; /* Ensures the website link does not overflow */
 }
