@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/bummer/static/css/main.7cafd46a.css",
-    "main.js": "/bummer/static/js/main.2eca5eca.js",
+    "main.css": "/bummer/static/css/main.10841deb.css",
+    "main.js": "/bummer/static/js/main.27976543.js",
     "static/media/emoji-yay-green.svg": "/bummer/static/media/emoji-yay-green.568ff9e0f8e495a858eca167d91d59f1.svg",
     "static/media/emoji-ok-blue.svg": "/bummer/static/media/emoji-ok-blue.4a4fd0b82ca4ae6ecb54750bb41e0369.svg",
     "static/media/emoji-bummer-red.svg": "/bummer/static/media/emoji-bummer-red.126594ef3f982adb181e8cd8fa2f7057.svg",
     "static/media/emoji-meh-orange.svg": "/bummer/static/media/emoji-meh-orange.bee01afb11c545ea833363927c16b879.svg",
     "static/media/bummer-name-animated.svg": "/bummer/static/media/bummer-name-animated.f5f25e83853e166f58f3e02593f27ae6.svg",
     "index.html": "/bummer/index.html",
-    "main.7cafd46a.css.map": "/bummer/static/css/main.7cafd46a.css.map",
-    "main.2eca5eca.js.map": "/bummer/static/js/main.2eca5eca.js.map"
+    "main.10841deb.css.map": "/bummer/static/css/main.10841deb.css.map",
+    "main.27976543.js.map": "/bummer/static/js/main.27976543.js.map"
   },
   "entrypoints": [
-    "static/css/main.7cafd46a.css",
-    "static/js/main.2eca5eca.js"
+    "static/css/main.10841deb.css",
+    "static/js/main.27976543.js"
   ]
 }
