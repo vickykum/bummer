@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bummer/static/css/main.10841deb.css",
-    "main.js": "/bummer/static/js/main.27976543.js",
+    "main.js": "/bummer/static/js/main.0d92fd0d.js",
     "static/media/emoji-yay-green.svg": "/bummer/static/media/emoji-yay-green.568ff9e0f8e495a858eca167d91d59f1.svg",
     "static/media/emoji-ok-blue.svg": "/bummer/static/media/emoji-ok-blue.4a4fd0b82ca4ae6ecb54750bb41e0369.svg",
     "static/media/emoji-bummer-red.svg": "/bummer/static/media/emoji-bummer-red.126594ef3f982adb181e8cd8fa2f7057.svg",
@@ -9,10 +9,10 @@
     "static/media/bummer-name-animated.svg": "/bummer/static/media/bummer-name-animated.f5f25e83853e166f58f3e02593f27ae6.svg",
     "index.html": "/bummer/index.html",
     "main.10841deb.css.map": "/bummer/static/css/main.10841deb.css.map",
-    "main.27976543.js.map": "/bummer/static/js/main.27976543.js.map"
+    "main.0d92fd0d.js.map": "/bummer/static/js/main.0d92fd0d.js.map"
   },
   "entrypoints": [
     "static/css/main.10841deb.css",
-    "static/js/main.27976543.js"
+    "static/js/main.0d92fd0d.js"
   ]
 }
