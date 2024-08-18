@@ -28,12 +28,25 @@ export const SearchLoc: React.FC<SearchLocProps> = ({ onSearch, realSearchOn }) 
             );
         }
     }, [realSearchOn]);
+    
+    const handleSearchAddressText = (searchText: string): boolean => {
+        // Regex pattern for at least 4 digits
+        const fourDigitsPattern = /^\d{4,}$/;
+        // Regex pattern for address format: `<alphanumeric>, <alphanumeric>, <alphanumeric>`
+        const addressPattern = /^[\w\s]+,[\w\s]+,[\w\s]+$/;
+    
+        // Check if the input matches the pattern for at least 4 digits
+        if (fourDigitsPattern.test(searchText) || addressPattern.test(searchText)) {
+            return true;
+        }
+        return false;
+    };
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInput(value);
         if (realSearchOn) {
-            if (value.length) {
+            if (value.length && handleSearchAddressText(value.trim())) {
                 try {
                     const suggestiveSearchResults = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(value)}&format=json&limit=10&countrycodes=${countryCode}`);
                     if (!suggestiveSearchResults.ok) {
